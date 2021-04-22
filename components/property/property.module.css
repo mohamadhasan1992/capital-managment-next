@@ -1,0 +1,10 @@
+.Content{
+    min-height: 40vh;    
+}
+.Direction{
+    text-align: center;
+}
+.VertAlign{
+    vertical-align: right;
+    direction: rtl;
+}

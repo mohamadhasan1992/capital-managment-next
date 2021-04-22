@@ -1,0 +1,30 @@
+
+.Btn{
+    background-color: #34363b;
+    color: #f5f6fa;
+    cursor: pointer;
+    font-size: .9rem;
+    font-family: lalezar;
+    padding: .3rem 2rem;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    transform: translateY(0);
+    transition: all 3ms ease-in-out;
+    margin-right: 1rem;
+    line-height: 1.6;
+    transition: all .2s;
+}
+
+.Btn:hover{
+    background-color: #fff;
+    color: #34363b;
+    transform: translateY(-2px);
+
+}
+.Active{
+    background-color: #fff;
+    color: #2f3640;
+}
+.Btn:focus{
+    outline-style: none;
+}

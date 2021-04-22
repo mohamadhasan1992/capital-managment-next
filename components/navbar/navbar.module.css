@@ -1,0 +1,30 @@
+
+.Content{
+    padding: 0 .5rem;
+    background-color: #2f3640;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    color: #dcdde1;
+    width: 100%;
+}
+
+.BrandLogo{
+    background-color: beige;
+    border-radius: 15px;
+}
+.Position{
+    text-align: center;
+}
+.LinkStyle{
+    color: #fff;
+    font-size: 1rem;
+    transition: font-size 1s;
+}
+.LinkStyle:hover{
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 1.2rem;
+
+}

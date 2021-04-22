@@ -1,0 +1,9 @@
+.Content{
+    min-height: 67vh;
+    border-radius: 15px;
+    border: 1px solid #000;
+    padding: 1rem;
+}
+.Item{
+    list-style: none;
+}

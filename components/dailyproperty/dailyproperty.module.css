@@ -1,0 +1,8 @@
+.Content{
+    min-height: 70vh;
+    direction: rtl;
+    max-width: 100vw;
+}
+.Direction{
+    text-align: center;
+}

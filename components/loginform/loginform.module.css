@@ -1,0 +1,26 @@
+.Content{
+    font-family: "lalezar";
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.FormBox{
+    min-width: 40%;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #000;
+    display: flex;
+    flex-direction: column;
+    background-color: darkgray;
+    margin-bottom: 2rem;
+    padding:2rem;
+    
+    
+}
+.BtnBox{
+    display: flex;
+    justify-content: flex-end;
+    
+}
