@@ -1,0 +1,19 @@
+.Content{
+    min-height: 40vh;    
+}
+.Direction{
+    text-align: center;
+}
+.VertAlign{
+    vertical-align: right;
+    direction: rtl;
+}
+.InputStyle{
+    box-sizing: border-box;
+    width: 6.2rem;
+    font-size: .8rem;
+    border-radius: 7px;
+    margin: .3rem;
+    padding: .2rem .5rem;
+    font-family: lalezar;
+}

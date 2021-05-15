@@ -1,32 +1,56 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
-import Navbar from '../components/navbar/navbar';
-import WholeProperty from '../components/wholeProperty/wholeProperty';
-import Property from '../components/property/property';
-import Footer from "../components/footer/footer";
-import LayoutSelector from "../components/layoutselector/layoutselector";
-import DailyProperty from "../components/dailyproperty/dailyproperty";
-import Layout from "../components/layout/layout";
+import WholeProperty from '../components/home/wholeProperty/wholeProperty';
+import Property from '../components/home/property/property';
+import LayoutSelector from "../components/home/layoutselector/layoutselector";
 
+import {
+  getAllProperties,
+  getWholeProperty,
+} from "../dataFetching/getData";
 
-const HomePage = () => {
-  const [layout,setLayout]=useState("property");
-  const changeToProperty = () => {
-    setLayout("property");
-  }
-  const changeToDailyProperty = () => {
-    setLayout("dailyproperty");
-  };
+const HomePage = (props) => {
+  //getting property data from props
+  const {properties,wholeProperty} = props;
+  
   return (
-      <Layout>
-        {layout && <WholeProperty />}
-        <LayoutSelector
-          changeToDailyProperty={changeToDailyProperty}
-          changeToProperty={changeToProperty}
-        />
-        {layout === "property" ? <Property /> : <DailyProperty />}
-      </Layout>
+    <>
+      <WholeProperty wholeProperty={wholeProperty} />
+      <LayoutSelector />
+      <Property property={properties} />
+    </>
   );
+}
+export async function getServerSideProps(ctx) {
+  //if nobody logged in
+    return {
+      props: {
+        properties: [
+          {
+            name: "",
+            buyDate: "",
+            value: "",
+            enteryPoint: "",
+            stopLimit: "",
+            target: "",
+            sellDate: "",
+          },
+        ],
+        wholeProperty: { initialProperty: "", difficulty: "" },
+      },
+    };
+  //if there is an user
+  // const properties = await getAllProperties(session.user._id);
+  // const wholeProperty = await getWholeProperty(session.user._id);
+  // return {
+  //   props: {
+  //     session,
+  //     properties,
+  //     wholeProperty
+  //   }
+  // }
+
+  
+ 
 }
 
 export default HomePage;

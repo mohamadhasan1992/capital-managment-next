@@ -1,8 +1,8 @@
 import classes from "./layout.module.css";
-import Header from "../navbar/navbar";
-import Footer from "../footer/footer";
+import Header from "./navbar/navbar";
+import Footer from "./footer/footer";
 
-const layout = (props) => {
+const Layout = (props) => {
     return(
         <div className={classes.Content}>
             <Header />
@@ -14,4 +14,4 @@ const layout = (props) => {
     )
 }
 
-export default layout;
+export default Layout;

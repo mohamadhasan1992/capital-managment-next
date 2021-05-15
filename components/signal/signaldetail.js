@@ -1,7 +1,7 @@
 import classes from "./signaldetail.module.css";
 
 const SignalDetail = (props) => {
-    const{name,type,duration,createdTime, target1, target2 , target3, stopLoss, leverage} = props.signalData;
+    const{name,type,timeframe,createdTime, target1, target2 , target3, stopLoss, leverage} = props.signalData;
     return (
       <div className="container mt-5">
         <ul className={classes.Content}>
@@ -14,7 +14,7 @@ const SignalDetail = (props) => {
           </li>
           <li className={classes.Item}>
             <span>TimeFrame: </span>
-            {duration}
+            {timeframe}
           </li>
           <li className={classes.Item}>
             <span>Date: </span>

@@ -1,12 +1,16 @@
 import classes from "./btn.module.css";
-import Link from "next/link";
 
-const Btn = (props) => {
-  
-    return (
-      <Link href={props.link}> 
-        <p className={classes.Btn}>{props.children}</p>
-      </Link>
-    );
+const Btn =(props) => {
+
+  const btnStyle = [classes.Btn];
+  if(props.type === "round"){
+    btnStyle.push(classes.Round)
+  }
+  return(
+    <button className={btnStyle.join(" ")} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
 };
+
 export default Btn;

@@ -1,13 +1,25 @@
-// // import App from 'next/app'
-// import Layout from "../components/layout/layout";
+import { Provider } from "react-redux";
+import authReducer from "../store/reducers/authReducer";
+import { createStore,combineReducers,applyMiddleware,compose } from "redux";
+import Head from "next/head";
+import Layout from "../components/layout/layout";
+import thunk from "redux-thunk";
 
-// function MyApp({ Component, pageProps }) {
-//   return(
-//       <Layout>
-//           <Component {...pageProps} />
-//       </Layout>
-//   );
-// }
+//create redux store and connect to the components
+const store = createStore(authReducer,compose(applyMiddleware(thunk)));
+
+function MyApp({ Component, pageProps }) {
+  return(
+    <Provider store={store}>
+      <Layout>
+        <Head>
+          <title>سامانه مدیریت سرمایه</title>
+        </Head>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
+  );
+}
 
 // // Only uncomment this method if you have blocking data requirements for
 // // every single page in your application. This disables the ability to
@@ -21,4 +33,4 @@
 // //   return { ...appProps }
 // // }
 
-// export default MyApp;
+export default MyApp;

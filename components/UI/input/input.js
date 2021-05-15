@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./input.module.css";
 
-const input = (props) => {
+const input = React.forwardRef((props,ref) => {
   const inputClasses = [classes.InputStyle];
   if (props.invalid && props.touched) {
     inputClasses.push(classes.Invalid);
@@ -15,12 +15,13 @@ const input = (props) => {
     case "input":
       inputElement = (
         <input
-          type="password"
+          type="input"
           className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}
-          placeholder={props.placeholder}
-          onChange={props.changed}
+          placeholder={props.placeholder} 
+          ref={ref}
+          required
         />
       );
       break;
@@ -32,6 +33,8 @@ const input = (props) => {
           value={props.value}
           placeholder={props.placeholder}
           onChange={props.changed}
+          ref={ref}
+          required
         />
       );
       break;
@@ -42,6 +45,8 @@ const input = (props) => {
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
+          ref={ref}
+          required
         />
       );
       break;
@@ -67,6 +72,8 @@ const input = (props) => {
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}
+          ref={ref}
+          required
         />
       );
       break;
@@ -77,6 +84,6 @@ const input = (props) => {
       {inputElement}
     </div>
   );
-};
+});
 
 export default input;
