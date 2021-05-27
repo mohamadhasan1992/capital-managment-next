@@ -19,7 +19,7 @@ const input = React.forwardRef((props,ref) => {
           className={inputClasses.join(" ")}
           {...props.elementConfig}
           value={props.value}
-          placeholder={props.placeholder} 
+          placeholder={props.children} 
           ref={ref}
           required
         />

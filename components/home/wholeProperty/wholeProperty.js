@@ -4,6 +4,20 @@ import CalculateIcon from "../../icons/calculateIcon";
 import {useRef} from "react";
 import {postData} from "../../../dataFetching/postData";
 
+// calculatin each property value
+  const eachPropertyValueCalculation = (initialProperty, selectedDiff) => {
+    switch (selectedDiff) {
+      case "1":
+        return initialProperty / 4;
+      case "1":
+        return initialProperty / 3;
+      case "1":
+        return initialProperty / 2;
+      default:
+        return initialProperty / 4;
+    }
+  };
+
 const WholeProperty = (props) => {
   const {initialProperty} = props.wholeProperty;
 
@@ -11,28 +25,34 @@ const WholeProperty = (props) => {
   const checkOneRef = useRef();
   const checkTwoRef = useRef();
   const checkThreeRef = useRef();
-
   
   // const difficultyHandler = (e) => {
   //   console.log(e.target.value);
   // }
+  let selectedDifficulty = "";
+  let eachPropVal = "";
   const submitWholePropertyHandler = async(e) => {
     e.preventDefault();
-    
     const initialProperty = initialPropertyInputRef.current.value;
-    
+    // grab the selected dropdown option
     const checkArr = [checkOneRef, checkTwoRef, checkThreeRef];
-    let selectedDifficulty = null;
     const selectedCheck = checkArr.forEach(check => {
       if(check.current.selected === true){
         selectedDifficulty = check.current.value;
       }
     })
-    
+    // created object
     const wholePropertyObject = {
       initialProperty,
       difficulty:selectedDifficulty
     };
+    // preparing result box information
+    eachPropVal = eachPropertyValueCalculation(
+      initialProperty,
+      selectedDifficulty
+    );
+
+    
     
     const response = await postData("http://127.0.0.2:8000/api/v1/wholeproperty",wholePropertyObject);
     alert(response.status);
@@ -42,7 +62,7 @@ const WholeProperty = (props) => {
       <div className={classes.Content}>
         <div className="container d-flex justify-content-between">
           <h6 dir="rtl" className="border border-dark rounded-top p-4">
-            سبد سهامی پیشنهادی برای شما تعداد 4 سهم به مبلغ
+            سبد سهامی پیشنهادی برای شما تعداد {selectedDifficulty} سهم به مبلغ {eachPropVal}
             <span>{initialProperty}</span> می باشد.
           </h6>
           <div>

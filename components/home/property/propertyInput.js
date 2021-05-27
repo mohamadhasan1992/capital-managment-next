@@ -1,9 +1,8 @@
 import {useRef} from "react";
 import Input from '../../UI/input/input';
 import classes from "./property.module.css";
-import BuyIcon from "../../icons/buyicon";
-import UpdateIcon from "../../icons/updateIcon";
-import axios from "axios";
+import {postData} from "../../../dataFetching/postData"; 
+
 
 const PropertyInput = () => {
   const nameInputRef = useRef();
@@ -14,7 +13,7 @@ const PropertyInput = () => {
   const sellDateInputRef = useRef();
   const enteryPointInputRef = useRef();
 
-  const submitHandler = () => {
+  const submitHandler = async() => {
     const newProperty = {
       name: nameInputRef.current.value,
       buyDate: buyDateInputRef.current.value,
@@ -26,68 +25,78 @@ const PropertyInput = () => {
       bought:true
     };
     try{
-      axios
-        .post("http://127.0.0.2:8000/api/v1/property",newProperty)
-        .then(res => console.log(res))
-        
+      const response = await postData("http://127.0.0.2:8000/api/v1/property",newProperty);
+      alert(response.status);
+      if(response.status === "success"){
+        nameInputRef.current.value = "";
+        buyDateInputRef.current.value = "";
+        valueInputRef.current.value = "";
+        enteryPointInputRef.current.value = "";
+        stopInputRef.current.value = "";
+        targetInputRef.current.value = "";
+        sellDateInputRef.current.value = "";
+      }
     }catch(err){
       console.log(err);
     }
     
+  
     
   }
   return (
     <tr className={classes.Direction}>
       <td>
-        <input
-          placeholder="نام نماد"
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={nameInputRef}
-        ></input>
+        >
+          نام نماد
+        </Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={buyDateInputRef}
-        ></input>
+        >تاریخ خرید</Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={valueInputRef}
-        ></input>
+        >ارزش خرید</Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={stopInputRef}
-        ></input>
+        >نقطه ورود</Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={enteryPointInputRef}
-        ></input>
+        >حد ضرر</Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={targetInputRef}
-        ></input>
+        >هدف</Input>
       </td>
       <td>
-        <input
-          placeholder=""
+        <Input
+          inputtype="input"
           className={classes.InputStyle}
           ref={sellDateInputRef}
-        ></input>
+        >تاریخ فروش</Input>
       </td>
-      
+
       <td dir="ltr">
         <button
           type="button"

@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 
 
 const Navbar = () => {
-  const page = useRouter().pathname.slice(1);
+  const pageQuery = useRouter().pathname.slice(1);
   
   const [session, loading] = useSession();
 
@@ -47,8 +47,8 @@ const Navbar = () => {
             <div className="col-4">
               <div dir="ltr" className="btn-group">
                 {loginBtn}
-                {page === "signal" && <LinkBtn link="/signal/newsignal">افزودن</LinkBtn>}
-                {page !== "signal" && <LinkBtn link="/signal">سیگنال</LinkBtn>}
+                {pageQuery === "signal" && <LinkBtn link="/signal/newsignal">افزودن</LinkBtn>}
+                {pageQuery !== "signal" && <LinkBtn link="/signal">سیگنال</LinkBtn>}
               </div>
             </div>
           </div>
